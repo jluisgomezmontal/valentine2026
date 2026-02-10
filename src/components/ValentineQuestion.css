@@ -41,24 +41,24 @@
 
 .vq-buttons-area {
   position: relative;
-  min-height: 320px;
+  min-height: 280px;
   width: 100%;
   overflow: hidden;
 }
 
-.btn-yes-wrapper {
+.vq-buttons-row {
   display: flex;
   justify-content: center;
-  padding-top: 0;
-  pointer-events: none;
+  gap: 1rem;
 }
 
 .btn-yes {
   background: linear-gradient(135deg, var(--deep-red), #b91c4c);
   color: var(--white);
   border: none;
-  width: 100%;
-  padding: 1rem 2.5rem;
+  flex: 1;
+  max-width: 200px;
+  padding: 1rem 2rem;
   font-size: 1.3rem;
   font-family: 'Playfair Display', serif;
   font-weight: 600;
@@ -68,7 +68,6 @@
   box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
   position: relative;
   z-index: 3;
-  pointer-events: all;
 }
 
 .btn-yes:hover {
@@ -80,11 +79,21 @@
   transform: scale(0.98);
 }
 
+.btn-no-placeholder {
+  flex: 1;
+  max-width: 200px;
+  display: flex;
+}
+
+.btn-no-placeholder.hidden {
+  visibility: hidden;
+  pointer-events: none;
+  min-height: 50px;
+}
+
 .btn-no {
-  position: absolute;
-  top: 80px;
-  left: 10px;
-  width: calc(100% - 20px);
+  flex: 1;
+  max-width: 200px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -96,8 +105,16 @@
   font-weight: 400;
   border-radius: 50px;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1;
   white-space: nowrap;
+}
+
+/* Once escaped, No becomes absolute and jumps around */
+.btn-no.escaped {
+  position: absolute;
+  flex: none;
+  width: auto;
+  max-width: none;
 }
 
 .btn-no:hover {
@@ -113,11 +130,5 @@
   }
   .vq-buttons-area {
     min-height: 350px;
-  }
-  .btn-yes {
-    width: auto;
-  }
-  .btn-no {
-    width: auto;
   }
 }

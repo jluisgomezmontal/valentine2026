@@ -9,6 +9,7 @@ export default function ValentineQuestion({ onAccept }) {
   const yesBtnRef = useRef(null);
   const [noText, setNoText] = useState('No 🙈');
   const [attempts, setAttempts] = useState(0);
+  const [escaped, setEscaped] = useState(false);
 
   const noTexts = [
     'No 🙈',
@@ -27,6 +28,8 @@ export default function ValentineQuestion({ onAccept }) {
     const yesBtn = yesBtnRef.current;
     if (!btn || !container || !yesBtn) return;
 
+    setEscaped(true);
+
     const containerRect = container.getBoundingClientRect();
     const btnWidth = btn.offsetWidth;
     const btnHeight = btn.offsetHeight;
@@ -35,7 +38,7 @@ export default function ValentineQuestion({ onAccept }) {
     const yesRect = yesBtn.getBoundingClientRect();
     const yesCenterX = yesRect.left - containerRect.left + yesRect.width / 2;
     const yesCenterY = yesRect.top - containerRect.top + yesRect.height / 2;
-    const safeRadius = 120; // min distance from Sí button
+    const safeRadius = 140; // min distance from Sí button
 
     const pad = 10;
     const areaW = containerRect.width - btnWidth - pad * 2;
@@ -70,22 +73,39 @@ export default function ValentineQuestion({ onAccept }) {
         </p>
 
         <div className="vq-buttons-area fade-in" ref={containerRef}>
-          <div className="btn-yes-wrapper">
+          <div className="vq-buttons-row">
             <button ref={yesBtnRef} className="btn-yes" onClick={onAccept}>
               Sí 💕
             </button>
+            <span className={`btn-no-placeholder${escaped ? ' hidden' : ''}`}>
+              {!escaped && (
+                <button
+                  ref={noButtonRef}
+                  className="btn-no"
+                  onMouseEnter={moveNoButton}
+                  onTouchStart={(e) => {
+                    e.preventDefault();
+                    moveNoButton();
+                  }}
+                >
+                  {noText}
+                </button>
+              )}
+            </span>
           </div>
-          <button
-            ref={noButtonRef}
-            className="btn-no"
-            onMouseEnter={moveNoButton}
-            onTouchStart={(e) => {
-              e.preventDefault();
-              moveNoButton();
-            }}
-          >
-            {noText}
-          </button>
+          {escaped && (
+            <button
+              ref={noButtonRef}
+              className="btn-no escaped"
+              onMouseEnter={moveNoButton}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                moveNoButton();
+              }}
+            >
+              {noText}
+            </button>
+          )}
         </div>
       </div>
     </section>
