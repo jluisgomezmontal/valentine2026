@@ -3,9 +3,9 @@ import './HistorySection.css';
 
 const milestones = [
   {
-    year: '16 Abr 2013',
+    year: '17 Abr 2013',
     title: 'El día que nos conocimos',
-    text: 'Dos almas que se encontraron un 16 de abril y supieron, desde el primer momento, que algo especial estaba por escribirse.',
+    text: 'Dos almas que se encontraron un 17 de abril y supieron, desde el primer momento, que algo especial estaba por escribirse.',
     icon: '✨',
   },
   {

@@ -20,7 +20,7 @@ export default function HeroSection() {
           <span className="hero-highlight">empezó contigo</span> ❤️
         </h1>
         <p className="hero-subtitle">
-          12 años amándote. 3 años siendo tu esposo.
+          12 años amándote. Casi 3 años siendo tu esposo.
           <br />
           Y toda una vida por delante.
         </p>

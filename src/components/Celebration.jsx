@@ -76,8 +76,8 @@ export default function Celebration({ show }) {
             Entonces prepárate…
           </p>
           <p className="celebration-reveal">
-            Tengo una reservación especial para una
-            <strong> comida en Acapulco</strong> a las
+            Tengo una sorpresa especial ti, mi amor
+            <strong> el sabado en Acapulco</strong> a las
             <strong> 4:30 pm</strong> 🌅🍽️
           </p>
           <p className="celebration-footer script-font">

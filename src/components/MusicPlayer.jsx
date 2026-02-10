@@ -1,23 +1,41 @@
 import { useState, useRef, useEffect } from 'react';
+import ordinarySong from '../assets/ordinary.mp3';
 import './MusicPlayer.css';
 
 export default function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
-    const audio = new Audio(
-      'https://cdn.pixabay.com/audio/2022/02/14/audio_7a0c4bfcee.mp3'
-    );
+    const audio = new Audio(ordinarySong);
     audio.loop = true;
     audio.volume = 0.3;
-    audio.addEventListener('canplaythrough', () => setLoaded(true));
     audioRef.current = audio;
+
+    // Autoplay on first user interaction (browsers block autoplay without interaction)
+    const autoplay = () => {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+      document.removeEventListener('click', autoplay);
+      document.removeEventListener('touchstart', autoplay);
+      document.removeEventListener('scroll', autoplay);
+    };
+
+    // Try immediate autoplay first
+    audio.play().then(() => {
+      setPlaying(true);
+    }).catch(() => {
+      // If blocked, wait for first user interaction
+      document.addEventListener('click', autoplay, { once: false });
+      document.addEventListener('touchstart', autoplay, { once: false });
+      document.addEventListener('scroll', autoplay, { once: false });
+    });
 
     return () => {
       audio.pause();
       audio.src = '';
+      document.removeEventListener('click', autoplay);
+      document.removeEventListener('touchstart', autoplay);
+      document.removeEventListener('scroll', autoplay);
     };
   }, []);
 
