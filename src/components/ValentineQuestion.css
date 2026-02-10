@@ -1,0 +1,123 @@
+.valentine-question {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(180deg, #fce4ec 0%, var(--white) 30%, var(--soft-bg) 100%);
+  position: relative;
+  z-index: 2;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vq-container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vq-heart-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: floatHeart 3s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.vq-title {
+  font-size: 2.2rem;
+  color: var(--wine);
+  margin-bottom: 0.8rem;
+}
+
+.vq-text {
+  font-size: 1.8rem;
+  color: var(--deep-red);
+  margin-bottom: 3rem;
+  line-height: 1.4;
+}
+
+.vq-buttons-area {
+  position: relative;
+  min-height: 320px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.btn-yes-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  pointer-events: none;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, var(--deep-red), #b91c4c);
+  color: var(--white);
+  border: none;
+  width: 100%;
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+  position: relative;
+  z-index: 3;
+  pointer-events: all;
+}
+
+.btn-yes:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 35px rgba(139, 0, 0, 0.4);
+}
+
+.btn-yes:active {
+  transform: scale(0.98);
+}
+
+.btn-no {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  width: calc(100% - 20px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--wine);
+  border: 2px solid var(--rose);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.btn-no:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .vq-title {
+    font-size: 2.8rem;
+  }
+  .vq-text {
+    font-size: 2.2rem;
+  }
+  .vq-buttons-area {
+    min-height: 350px;
+  }
+  .btn-yes {
+    width: auto;
+  }
+  .btn-no {
+    width: auto;
+  }
+}

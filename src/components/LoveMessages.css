@@ -1,0 +1,110 @@
+.love-messages {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(180deg, var(--soft-bg) 0%, #fce4ec 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.love-messages-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.love-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--wine);
+  margin-bottom: 2.5rem;
+}
+
+.love-heading .script-font {
+  font-size: 2.6rem;
+  color: var(--deep-red);
+}
+
+.messages-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.message-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(232, 160, 191, 0.3);
+  border-radius: 20px;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.message-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--deep-red), var(--coral));
+}
+
+.message-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(139, 0, 0, 0.1);
+}
+
+.message-quote {
+  position: absolute;
+  top: 0.3rem;
+  left: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--rose);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.message-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--wine);
+  line-height: 1.7;
+}
+
+.message-heart {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--coral);
+  animation: heartPulse 2s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 600px) {
+  .messages-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .love-heading {
+    font-size: 2.5rem;
+  }
+  .love-heading .script-font {
+    font-size: 3.2rem;
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+  .messages-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
